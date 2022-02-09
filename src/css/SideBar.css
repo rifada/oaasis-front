@@ -1,0 +1,79 @@
+/* 사이드바 */
+.sidebar {
+  background-color: #060b26;
+  width: 70px;
+  height: calc(100vh - 70px);
+  display: flex;
+  flex-wrap: nowrap;
+  position: absolute;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: none;
+  top: 70px;
+  margin: 0;
+}
+
+/* 사이드바 액티브*/
+.sidebar.active {
+  width: 204px;
+  height: calc(100vh - 70px);
+  left: 0;
+  opacity: 0.8;
+  z-index: 99;
+}
+
+/* 사이드바 아이템 */
+.sidebar-items {
+  align-items: center;
+  width: 204px;
+  height: 60px;
+}
+
+.sidebar-item {
+  display: flex;
+  flex-wrap: nowrap;
+  list-style: none;
+  align-items: center;
+  padding: 8px 10px 8px 10px;
+  width: 184px;
+  height: 60px;
+}
+
+.sidebar-item div {
+  padding: 10px;
+  width: 30px;
+  text-align: center;
+}
+
+/* 리스트 링크 */
+.sidebar .sidebar-item a {
+  display: flex;
+  text-decoration: none;
+  color: #f5f5f5;
+  font-size: 18px;
+  height: 100%;
+  border-radius: 4px;
+  align-items: center;
+}
+
+/*리스트 링크 hover*/
+.sidebar .sidebar-item a:hover {
+  background-color: #1a83ff;
+}
+
+/*리스트 링크 pending hover*/
+.sidebar.active .sidebar-item a:hover {
+  background-color: #1a83ff;
+  width: 100%;
+}
+
+/* 리스트 텍스트 */
+.sidebar .sidebar-item span {
+  width: 0px;
+  opacity: 0;
+}
+
+/* 리스트 텍스트 pending */
+.sidebar.active .sidebar-item span {
+  opacity: 1;
+}

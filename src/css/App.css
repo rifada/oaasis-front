@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Nanum Gothic", sans-serif;
+}
+
+.grid {
+  margin: 1rem;
+  height: calc(100% - 7.5rem);
+}
+
+/*로딩바 시작*/
+.loading {
+  display: none;
+}
+
+.loading.active {
+  display: flex;
+  position: fixed;
+  width: 100vw;
+  height: calc(100vh - 70px);
+  top: 70px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  font-size: 50px;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+/*로딩바 끝*/
+
+/*버튼 영역 시작*/
+.btn_group {
+  margin: 0.5rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn_search {
+  width: 4rem;
+  height: 2.5rem;
+  /* margin-top: 0.5rem; */
+  margin-right: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #61bb46;
+  cursor: pointer;
+}
+
+.btn_add {
+  width: 4rem;
+  height: 2.5rem;
+  /* margin-top: 0.5rem; */
+  margin-right: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #fdb827;
+  cursor: pointer;
+}
+
+.btn_save {
+  width: 4rem;
+  height: 2.5rem;
+  /* margin-top: 0.5rem; */
+  margin-right: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #f5821f;
+  cursor: pointer;
+}
+
+.btn_del {
+  width: 4rem;
+  height: 2.5rem;
+  /* margin-top: 0.5rem; */
+  margin-right: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #e03a3e;
+  cursor: pointer;
+}
+
+.btn_init {
+  width: 4rem;
+  height: 2.5rem;
+  /* margin-top: 0.5rem; */
+  margin-right: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #009ddc;
+  cursor: pointer;
+}
+/*버튼 영역 끝*/

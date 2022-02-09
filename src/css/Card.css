@@ -1,0 +1,36 @@
+.dashboard_card {
+  display: grid;
+  grid-template-columns: 2fr 6fr 2fr;
+  width: 90%;
+  height: 8rem;
+  border-radius: 15px;
+  background-color: #060b26;
+}
+
+.card_icon {
+  margin-right: 0.5em;
+  font-size: 40px;
+  align-self: center;
+}
+
+.card_text {
+  text-align: center;
+  margin-left: 0.5rem;
+  font-size: 30px;
+  align-self: center;
+}
+
+.card_title {
+  text-align: center;
+  color: rgb(235, 235, 235);
+  margin: 0.5rem;
+  font-size: 20px;
+  align-self: center;
+}
+.card_content {
+  text-align: center;
+  color: white;
+  margin: 0.5rem;
+  font-size: 25px;
+  align-self: center;
+}

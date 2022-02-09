@@ -1,0 +1,15 @@
+/*컨텐츠 영역 시작*/
+.layout_content {
+  padding-left: 70px;
+  width: calc(100% - 70px);
+  height: calc(100vh - 70px);
+  background-color: rgb(235, 235, 235);
+  overflow-y: scroll;
+}
+
+.layout_content.active {
+  width: calc(100%- 70px);
+  height: calc(100vh - 70px);
+  overflow-y: scroll;
+}
+/*컨텐츠 영역 끝*/
