@@ -2,9 +2,6 @@ import React from "react";
 import "../css/Dashboard.css";
 import "../css/App.css";
 
-import "@toast-ui/chart/dist/toastui-chart.min.css";
-import { AreaChart, PieChart } from "@toast-ui/react-chart";
-
 import {
   faBox,
   faTshirt,
@@ -45,119 +42,12 @@ const DashBoard = () => {
     },
   ];
 
-  const areaData = {
-    categories: [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "June",
-      "July",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ],
-    series: [
-      {
-        name: "Retail",
-        data: [98, 99, 102, 105, 107, 110, 98, 99, 102, 105, 107, 110],
-      },
-      {
-        name: "Fashion",
-        data: [88, 100, 85, 138, 141, 145, 98, 99, 102, 105, 107, 110],
-      },
-    ],
-  };
-  const pieData = {
-    categories: ["Company Type"],
-    series: [
-      {
-        name: "Liquid",
-        data: 50,
-      },
-      {
-        name: "Retail",
-        data: 200,
-      },
-      {
-        name: "Fashion",
-        data: 28,
-      },
-      {
-        name: "Golf",
-        data: 36,
-      },
-    ],
-  };
-  const areaOptions = {
-    chart: {
-      width: "auto",
-      height: "auto",
-      align: "center",
-      title: "Company Count",
-    },
-    yAxis: {
-      title: "Count",
-    },
-    xAxis: {
-      title: "Month",
-    },
-    exportMenu: {
-      visible: false,
-    },
-    legend: {
-      align: "bottom",
-    },
-  };
-  const pieOptions = {
-    chart: {
-      width: "auto",
-      height: "auto",
-      align: "center",
-      title: "Company Type",
-    },
-    exportMenu: {
-      visible: false,
-    },
-    legend: {
-      align: "bottom",
-    },
-  };
-  const areaContainerStyle = {
-    width: "100%",
-    height: "50vh",
-  };
-
-  const pieContainerStyle = {
-    width: "100%",
-    height: "50vh",
-  };
-
   return (
     <div className="dashboard_layout">
       <div className="card_container">
         {cardList.map((item, i) => {
           return <Card item={item} key={i} />;
         })}
-      </div>
-      <div className="chart_container">
-        <div className="chart">
-          <AreaChart
-            data={areaData}
-            options={areaOptions}
-            style={areaContainerStyle}
-          />
-        </div>
-        <div className="chart">
-          <PieChart
-            data={pieData}
-            options={pieOptions}
-            style={pieContainerStyle}
-          />
-        </div>
       </div>
     </div>
   );

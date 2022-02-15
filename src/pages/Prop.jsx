@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-import "tui-grid/dist/tui-grid.css";
-
-import Grid from "@toast-ui/react-grid";
 import Loading from "../components/Loading";
 import CondCom from "../components/ConditionCom";
 
@@ -77,16 +74,7 @@ const Prop = () => {
       <div>
         <CondCom />
       </div>
-      <div className="grid">
-        <Grid
-          ref={TuiGrid}
-          data={gridData}
-          columns={columns}
-          rowHeight={25}
-          bodyHeight={"fitToParent"}
-          rowHeaders={["checkbox"]}
-        />
-      </div>
+      <div className="grid"></div>
     </>
   );
 };

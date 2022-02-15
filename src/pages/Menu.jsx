@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-import "tui-grid/dist/tui-grid.css";
-
-import Grid from "@toast-ui/react-grid";
 import Loading from "../components/Loading";
 
 const Menu = () => {
@@ -87,17 +84,7 @@ const Menu = () => {
         </button>
       </div>
       <Loading visible={loading} />
-      <div className="grid">
-        <Grid
-          ref={TuiGrid}
-          data={gridData}
-          columns={columns}
-          treeColumnOptions={options}
-          rowHeight={25}
-          bodyHeight={"fitToParent"}
-          rowHeaders={["checkbox"]}
-        />
-      </div>
+      <div className="grid"></div>
     </>
   );
 };
