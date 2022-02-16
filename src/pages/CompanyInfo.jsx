@@ -12,8 +12,6 @@ import Popup from "../components/Popup";
 import Loading from "../components/Loading";
 
 const CompanyInfo = () => {
-  let history = useHistory();
-
   const AgGrid = createRef();
 
   const [gridData, setGrid] = useState([]);
@@ -69,6 +67,12 @@ const CompanyInfo = () => {
       field: "comNm",
       filter: true,
       editable: true,
+      cellStyle: (params) => {
+        if (params.colDef.editable === true) {
+          return { backgroundColor: "#e1f8e7" };
+        }
+        return null;
+      },
     },
     { headerName: "요금", width: 150, field: "charge", sortable: true },
     {
@@ -81,6 +85,12 @@ const CompanyInfo = () => {
       },
       editable: true,
       refData: useYnCode,
+      cellStyle: (params) => {
+        if (params.colDef.editable === true) {
+          return { backgroundColor: "#e1f8e7" };
+        }
+        return null;
+      },
     },
     {
       headerName: "포스사용여부",
@@ -92,6 +102,12 @@ const CompanyInfo = () => {
       },
       editable: true,
       refData: posCode,
+      cellStyle: (params) => {
+        if (params.colDef.editable === true) {
+          return { backgroundColor: "#e1f8e7" };
+        }
+        return null;
+      },
     },
     {
       headerName: "시스템구분",
@@ -103,6 +119,7 @@ const CompanyInfo = () => {
       headerName: "가입일",
       width: 250,
       field: "joinDate",
+      cellClass: "dateFormat",
     },
     { headerName: "등록자", width: 100, field: "regId" },
     { headerName: "등록일", width: 250, field: "regDate" },
@@ -116,7 +133,7 @@ const CompanyInfo = () => {
 
   //추가
   const fadd = () => {
-    AgGrid.current.api.selectAll();
+    AgGrid.current.api.applyTransaction({ add: [{}] });
   };
 
   //조회
@@ -124,9 +141,9 @@ const CompanyInfo = () => {
     setLoading(true);
     console.log(localStorage.getItem("OassisToken"));
     axios
-      .get("http://localhost:8090/company/all", {
+      .get(`${process.env.REACT_APP_API_URL}/company/all`, {
         headers: {
-          Authorization: "Bearer " + localStorage.getItem("OassisToken"),
+          Authorization: `Bearer ${localStorage.getItem("OassisToken")}`,
         },
       })
       .then((Response) => {
@@ -146,8 +163,7 @@ const CompanyInfo = () => {
 
   //초기화
   const finit = () => {
-    // setGrid([]);
-    AgGrid.current.api.exportDataAsExcel();
+    setGrid([]);
   };
 
   //저장
@@ -168,8 +184,13 @@ const CompanyInfo = () => {
     console.log(AgGrid.current.api.getSelectedRows());
     axios
       .delete(
-        "http://localhost:8090/company/delete/",
-        AgGrid.current.api.getSelectedRows()
+        `${process.env.REACT_APP_API_URL}/company/delete`,
+        AgGrid.current.api.getSelectedRows(),
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("OassisToken")}`,
+          },
+        }
       )
       .then((Response) => {
         console.log(Response.data);
@@ -190,15 +211,13 @@ const CompanyInfo = () => {
   };
 
   const save = () => {
-    console.log(localStorage.getItem("OassisToken"));
-
     axios
       .post(
-        "http://localhost:8090/company/create/",
+        `${process.env.REACT_APP_API_URL}/company/create`,
         AgGrid.current.api.getSelectedRows(),
         {
           headers: {
-            Authorization: "Bearer " + localStorage.getItem("OassisToken"),
+            Authorization: `Bearer ${localStorage.getItem("OassisToken")}`,
           },
         }
       )
@@ -211,17 +230,7 @@ const CompanyInfo = () => {
   };
 
   const getContextMenuItems = useCallback((params) => {
-    console.log("TEST");
     var result = [
-      {
-        // custom item
-        name: "Alert " + params.value,
-        action: function () {
-          window.alert("Alerting about " + params.value);
-        },
-        cssClasses: ["redFont", "bold"],
-      },
-      "separator",
       {
         // custom item
         name: "Windows",
@@ -241,18 +250,13 @@ const CompanyInfo = () => {
         icon: '<img src="https://www.ag-grid.com/example-assets/skills/mac.png"/>',
       },
       "separator",
-      {
-        // custom item
-        name: "Checked",
-        checked: true,
-        action: function () {
-          console.log("Checked Selected");
-        },
-        icon: '<img src="https://www.ag-grid.com/example-assets/skills/mac.png"/>',
-      },
-      "copy",
+      "copyWithHeaders",
+      "copyWithGroupHeaders",
       "separator",
-      "chartRange",
+      "copy",
+      "paste",
+      "separator",
+      "export",
     ];
     return result;
   }, []);
@@ -261,9 +265,9 @@ const CompanyInfo = () => {
     <>
       <ButtonGroup
         fsearch={fsearch}
-        fadd={fadd}
+        //fadd={fadd}
         fsave={fsave}
-        // fdel={fdel}
+        fdel={fdel}
         finit={finit}
       />
       <Loading visible={loading} />

@@ -6,7 +6,7 @@
 
 1. react-router-dom
 2. fontAwesomeIcon
-3. ToastUI (Grid)
+3. AG-Grid (Grid)
 
 ---
 
@@ -17,22 +17,38 @@
 
 ---
 
-> ## Toast UI
+> ## AG GRID
 
-- Toast UI Grid
-- npm install --save @toast-ui/react-grid
-- Toast UI Grid for React (https://github.com/nhn/tui.grid/tree/master/packages/toast-ui.react-grid)
+- AG Grid
+- npm install --save ag-grid-enterprise
+- AG Grid (https://www.ag-grid.com/)
 
 ---
 
-> ## Toast Chart
+> ## Grid Example
+>
+> > Ref를 얻어옴
 
-- Toast UI Chart
-- npm install --save @toast-ui/react-chart
-- Toast UI Chart for React(https://github.com/nhn/tui.chart/tree/main/apps/react-chart)
+```js
+const AgGrid = createRef();
+```
 
-> ## Toast Calendar
+> > 행 추가
 
-- Toast UI Calendar
-- npm install --save @toast-ui/react-calendar
-- Toast UI Calendar for React(https://github.com/nhn/toast-ui.react-calendar)
+```js
+AgGrid.current.api.applyTransaction({ add: [{}] });
+```
+
+> > 행 전체선택
+
+```js
+AgGrid.current.api.selectAll();
+```
+
+> > 체크된 행 추출
+
+```js
+AgGrid.current.api.getSelectedRows();
+```
+
+---
